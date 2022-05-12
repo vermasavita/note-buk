@@ -14,7 +14,7 @@ const Home = () => {
           wherever you are
         </h2>
         <button type="button" className="btn">
-          <Link to="/login" className="try-book-btn">
+          <Link to="/notes" className="try-book-btn">
             Try NoteBook
           </Link>
         </button>
