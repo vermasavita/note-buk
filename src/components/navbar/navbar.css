@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: var(--info-color);
+  background-color: var(--orange-color);
 }
 .head-container {
   display: flex;
@@ -33,6 +33,7 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 0;
   padding:  5px 10px;
+  margin-right: 2rem;
 }
 
 .action-icon .btn .link {
@@ -40,9 +41,9 @@
   color: var(--black-color);
 }
 
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
   .header {
     position: fixed;
     z-index: 3;
   }
-}
+} */

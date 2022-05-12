@@ -1,0 +1,63 @@
+.note-card-container {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  width: 30%;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.note-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-title-action {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.note-title span {
+  font-size: 1.7rem;
+}
+
+.form-control p {
+  margin: 5px 0;
+  padding: 10px 0;
+  font-size: 1.5rem;
+}
+
+.note-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-date p {
+  display: flex;
+  align-items: flex-end;
+}
+.note-action-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.note-title-action .bxs-pin {
+  color: var(--ligtest-color);
+}
+.note-action-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.note-action-container button i {
+  font-size: 1.8rem;
+  color: var(--ligtest-color);
+}
+
+@media screen and (max-width: 900px) {
+  .note-card-container {
+    width: 100% ;
+  }
+}
