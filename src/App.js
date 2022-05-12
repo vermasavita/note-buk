@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Archive, Login, Notes, Signup, Trash } from "./pages";
+import { Archive, Home, Login, Notes, Signup, Trash } from "./pages";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Route path="/notes" element={<Notes />}></Route>
         <Route path="/archive" element={<Archive />}></Route>
         <Route path="/trash" element={<Trash />}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </div>
   );
