@@ -1,5 +1,4 @@
-import "./note-card.css";
-const NoteCard = () => {
+const ArchiveCard = () => {
   return (
     <>
       <div className="note-card-container">
@@ -21,15 +20,11 @@ const NoteCard = () => {
           <div className="note-date">
             <p>Created on 26/10/2020</p>
             <div className="note-action-container">
-
-              <button>
-                <i class="bx bx-pencil"></i>
-              </button>
-              <button>
-              <i class='bx bx-archive-in' ></i>
-              </button>
               <button>
                 <i class="bx bx-trash-alt"></i>
+              </button>
+              <button>
+                <i class="bx bx-archive-out"></i>
               </button>
             </div>
           </div>
@@ -39,4 +34,4 @@ const NoteCard = () => {
   );
 };
 
-export { NoteCard };
+export { ArchiveCard };
