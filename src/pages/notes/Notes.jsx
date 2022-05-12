@@ -1,7 +1,9 @@
-import { Navbar, NoteCard, SideBar } from "../../components";
+import { useState } from "react";
+import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
 import "./notes.css";
 
 const Notes = () => {
+  const [createNoteModal, setCreateNoteModal] = useState(false);
   return (
     <>
       <Navbar />
@@ -13,12 +15,15 @@ const Notes = () => {
           <div className="create-note-head">
             <h1>Notes</h1>
             <div className="note-head-action">
-              <button class="btn btn-icon">
-                <i class="bx bx-filter"></i>
+              <button className="btn btn-icon">
+                <i className="bx bx-filter"></i>
                 Filter
               </button>
-              <button class="btn btn-icon note-btn">
-                <i class="bx bx-plus"></i>Create Note
+              <button
+                className="btn btn-icon note-btn"
+                onClick={() => setCreateNoteModal(true)}
+              >
+                <i className="bx bx-plus"></i>Create Note
               </button>
             </div>
           </div>
@@ -40,6 +45,9 @@ const Notes = () => {
             </div>
           </div>
         </div>
+        {createNoteModal ? (
+          <NoteModal setCreateNoteModal={setCreateNoteModal} />
+        ) : null}
       </div>
     </>
   );

@@ -9,7 +9,7 @@ const TrashCard = () => {
                 <div className="note-title-action">
                   <span>meduim</span>
                   <span>
-                    <i class="bx bxs-pin"></i>
+                    <i className="bx bxs-pin"></i>
                   </span>
                 </div>
               </div>
@@ -21,10 +21,10 @@ const TrashCard = () => {
               <p>Created on 26/10/2020</p>
               <div className="note-action-container">
                 <button>
-                  <i class="bx bx-trash-alt"></i>
+                  <i className="bx bx-trash-alt"></i>
                 </button>
                 <button>
-                  <i class="bx bx-archive-out"></i>
+                  <i className="bx bx-archive-out"></i>
                 </button>
               </div>
             </div>

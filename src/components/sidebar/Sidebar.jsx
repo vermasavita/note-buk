@@ -8,26 +8,26 @@ const SideBar = () => {
     <div className={`sidebar ${sidebar ? "active" : ""}`}>
       <ul>
         <li className="sidebarListItems">
-          <i class="bx bx-bulb"></i>
+          <i className="bx bx-bulb"></i>
 
           <Link to="/" className="sidebarText">
             Notes
           </Link>
         </li>
         <li className="sidebarListItems">
-          <i class="bx bx-purchase-tag"></i>
+          <i className="bx bx-purchase-tag"></i>
           <div className="sidebarText">Label</div>
         </li>
         <li className="sidebarListItems">
-          <i class="bx bx-archive-in"></i>
+          <i className="bx bx-archive-in"></i>
           <div className="sidebarText">Archive</div>
         </li>
         <li className="sidebarListItems">
-          <i class="bx bx-trash-alt"></i>
+          <i className="bx bx-trash-alt"></i>
           <div className="sidebarText">Trash</div>
         </li>
         <li className="sidebarListItems">
-          <i class="bx bx-log-in-circle"></i>
+          <i className="bx bx-log-in-circle"></i>
 
           <div className="sidebarText">Logout</div>
         </li>

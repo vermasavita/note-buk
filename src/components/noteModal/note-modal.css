@@ -1,0 +1,94 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  max-width: 50rem;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  background-color: var(--white-color);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-header .bx-x {
+  font-size: 2.5rem;
+}
+
+.modal-header .bx-x:active {
+  color: var(--orange-color);
+}
+.modal-body {
+  width: 100%;
+}
+
+.modal-body .title {
+  border: 1px solid var(--light-color);
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.rich-text-edior {
+  box-shadow: none;
+  height: 15rem;
+}
+
+
+.note-modal-action-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 5rem;
+}
+
+.options {
+  padding: 2rem 0 3rem 0;
+}
+
+.options select {
+  padding: 5px;
+  border: 1px solid var(--ligtest-color);
+  border-radius: 5px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-footer .btn {
+  background-color: var(--light-color);
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.modal-footer .btn-icon {
+  background-color: var(--orange-color);
+}

@@ -10,7 +10,7 @@ const NoteCard = () => {
               <div className="note-title-action">
                 <span>meduim</span>
                 <span>
-                  <i class="bx bxs-pin"></i>
+                  <i className="bx bxs-pin"></i>
                 </span>
               </div>
             </div>
@@ -23,13 +23,13 @@ const NoteCard = () => {
             <div className="note-action-container">
 
               <button>
-                <i class="bx bx-pencil"></i>
+                <i className="bx bx-pencil"></i>
               </button>
               <button>
-              <i class='bx bx-archive-in' ></i>
+              <i className='bx bx-archive-in' ></i>
               </button>
               <button>
-                <i class="bx bx-trash-alt"></i>
+                <i className="bx bx-trash-alt"></i>
               </button>
             </div>
           </div>
