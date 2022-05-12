@@ -16,19 +16,24 @@ const SideBar = () => {
         </li>
         <li className="sidebarListItems">
           <i className="bx bx-purchase-tag"></i>
-          <div className="sidebarText">Label</div>
+          <Link to="/" className="sidebarText">
+            Label
+          </Link>
         </li>
         <li className="sidebarListItems">
           <i className="bx bx-archive-in"></i>
-          <div className="sidebarText">Archive</div>
+          <Link to="/archive" className="sidebarText">
+            Archive
+          </Link>
         </li>
         <li className="sidebarListItems">
           <i className="bx bx-trash-alt"></i>
-          <div className="sidebarText">Trash</div>
+          <Link to="/trash" className="sidebarText">
+            Trash
+          </Link>
         </li>
         <li className="sidebarListItems">
           <i className="bx bx-log-in-circle"></i>
-
           <div className="sidebarText">Logout</div>
         </li>
       </ul>
