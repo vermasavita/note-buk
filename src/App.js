@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Archive, Login, Notes, Signup } from "./pages";
+import { Archive, Login, Notes, Signup, Trash } from "./pages";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/notes" element={<Notes />}></Route>
         <Route path="/archive" element={<Archive />}></Route>
+        <Route path="/trash" element={<Trash />}></Route>
       </Routes>
     </div>
   );
