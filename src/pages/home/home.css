@@ -1,0 +1,96 @@
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .layout-navbar {
+    width: 85%;
+    height: 15%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .layout-logo {
+    width: 10rem;
+    cursor: pointer;
+    color: var(--black-color);
+    font-family: cursive;
+    font-size: 3rem;
+  }
+  
+
+  .layout-navbar button {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background: var(--black-color);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    color: var(--white-color);
+    border: none;
+    box-shadow: 2px 1px rgb(0 0 0 / 19%), inset 0 -2px 0 black;
+  }
+  
+  .layout-content {
+    position: absolute;
+    color: var(--white-color);
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  
+  .layout-content h2 {
+    font-size: 6rem;
+    font-weight:200;
+    margin: 1rem 0 3rem;
+    line-height: 8rem;
+    text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  }
+  
+  .layout-content button {
+    background-color: var(--blue-color);
+    padding: 1rem 1.5rem;
+    color: var(--white-color);
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 1.7rem;
+    text-align: center;
+    box-shadow: 2px 1px rgb(0 0 0 / 19%), inset 0 -2px 0 var(--black-color);
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 8%);
+    cursor: pointer;
+  }
+
+  .layout-content .try-book-btn {
+      text-decoration: none;
+      color: var(--white-color)
+  }
+ 
+  @media screen and (max-width: 800px) {
+    .layout-content h2 {
+        font-size: 5rem;
+        line-height: 6rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .layout-content h2 {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .layout-content h2 {
+        font-size: 3rem;
+        line-height: 5rem;
+    }
+  }

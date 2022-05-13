@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--orange-color);
+}
+.head-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  padding: 0 2rem;
+}
+
+.head-container .logo {
+  color: var(--white-color);
+  font-weight: 500;
+}
+.icon {
+  width: 2.3rem;
+  height: 2.3rem;
+  background: none;
+  border: none;
+  fill: var(--white-color);
+  cursor: pointer;
+}
+.action-icon .btn {
+  color: var(--black-color);
+  background-color: var(--white-color);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 0;
+  padding:  5px 10px;
+  margin-right: 2rem;
+}
+
+.action-icon .btn .link {
+  margin-right: 0;
+  color: var(--black-color);
+}
+
+/* @media screen and (max-width: 900px) {
+  .header {
+    position: fixed;
+    z-index: 3;
+  }
+} */
