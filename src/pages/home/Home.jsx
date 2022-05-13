@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="hero">
       <div className="layout-navbar">
@@ -13,10 +14,8 @@ const Home = () => {
           <br />
           wherever you are
         </h2>
-        <button type="button" className="btn">
-          <Link to="/notes" className="try-book-btn">
+        <button type="button" className="btn" onClick={() => navigate("/login")}>
             Try NoteBook
-          </Link>
         </button>
       </div>
     </div>
