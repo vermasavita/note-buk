@@ -1,7 +1,72 @@
-import { Link } from "react-router-dom";
 import "./authentication.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../context";
+import { signUpService } from "../../services";
+import { toast } from "react-toastify";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const { authDispatch } = useAuth();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const changeHandler = (e) => {
+    const { id, value } = e.target;
+    setUser({ ...user, [id]: value });
+  };
+
+  const checkInputFields = () => {
+    return (
+      user.email !== "" && user.password !== "" && user.confirmPassword !== ""
+    );
+  };
+
+  const checkPassword = () => {
+    if (user.password !== user.confirmPassword) {
+      toast.error("Password doesn't match");
+    } else {
+      return true;
+    }
+  };
+
+  const signUpHandler = async (event) => {
+    event.preventDefault();
+    if (checkInputFields()) {
+      if (checkPassword()) {
+        try {
+          const response = await signUpService(user);
+          if (response.status === 201) {
+            navigate("/notes");
+            localStorage.setItem("token", response.data.encodedToken);
+            localStorage.setItem(
+              "user",
+              JSON.stringify(response.data.createdUser)
+            );
+
+            authDispatch({
+              type: "SIGNUP",
+              payload: {
+                user: response.data.createdUser,
+                token: response.data.encodedToken,
+              },
+            });
+
+            toast.success("Successfuly Signed In");
+          } else {
+            throw new Error("Something went wrong! Please try again later");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } else {
+      toast.error("Enter all the fields");
+    }
+  };
   return (
     <div className="container">
       <div className="box">
@@ -16,6 +81,8 @@ const Signup = () => {
                 id="email"
                 placeholder="Enter your email address"
                 required
+                value={user.email}
+                onChange={changeHandler}
               />
             </div>
 
@@ -27,6 +94,8 @@ const Signup = () => {
                 id="password"
                 placeholder="Enter your password"
                 required
+                value={user.password}
+                onChange={changeHandler}
               />
             </div>
 
@@ -37,12 +106,14 @@ const Signup = () => {
                 name="confirmPassword"
                 id="confirmPassword"
                 placeholder="Confirm your password"
+                value={user.confirmPassword}
+                onChange={changeHandler}
               />
             </div>
           </div>
 
           <div className="login-btns">
-            <button type="submit" className="login">
+            <button type="submit" className="login" onClick={signUpHandler}>
               Sign Up
             </button>
           </div>
