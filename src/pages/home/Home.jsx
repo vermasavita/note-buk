@@ -6,7 +6,8 @@ const Home = () => {
     <div className="hero">
       <div className="layout-navbar">
         <h1 className="layout-logo">NoteBook</h1>
-        <button type="button">GitHub</button>
+        <button type="button">
+          <Link to="https://github.com/vermasavita" className="link">GitHub</Link> </button>
       </div>
       <div className="layout-content">
         <h2>

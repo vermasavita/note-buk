@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Archive, Home, Login, Notes, Signup, Trash } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { RequiresAuth } from "./RequiresAuth";
+import { RequiresAuth } from "./RequireAuth";
 
 function App() {
   return (
