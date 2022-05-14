@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, SidebarProvider } from "./context";
+import { AuthProvider, NoteProvider, SidebarProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -14,7 +14,9 @@ ReactDOM.render(
     <BrowserRouter>
       <SidebarProvider>
         <AuthProvider>
-          <App />
+          <NoteProvider>
+            <App />
+          </NoteProvider>
         </AuthProvider>
       </SidebarProvider>
     </BrowserRouter>
