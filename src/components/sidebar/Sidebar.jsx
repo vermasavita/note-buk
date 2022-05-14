@@ -1,8 +1,17 @@
-import { useSidebar } from "../../context";
-import { Link } from "react-router-dom";
+import { useAuth, useSidebar } from "../../context";
+import { Link, useNavigate } from "react-router-dom";
 import "./sidebar.css";
 const SideBar = () => {
+  const navigate = useNavigate();
   const { sidebar } = useSidebar();
+  const { authDispatch } = useAuth();
+
+  const logoutHandler = () => {
+    navigate("/");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    authDispatch({ type: "LOGOUT" });
+  };
 
   return (
     <div className={`sidebar ${sidebar ? "active" : ""}`}>
@@ -32,7 +41,7 @@ const SideBar = () => {
             Trash
           </Link>
         </li>
-        <li className="sidebarListItems">
+        <li className="sidebarListItems" onClick={logoutHandler}>
           <i className="bx bx-log-in-circle"></i>
           <div className="sidebarText">Logout</div>
         </li>

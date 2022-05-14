@@ -38,6 +38,9 @@
     box-shadow: 2px 1px rgb(0 0 0 / 19%), inset 0 -2px 0 black;
   }
   
+  .layout-navbar .link{
+    color: var(--white-color);
+  }
   .layout-content {
     position: absolute;
     color: var(--white-color);
