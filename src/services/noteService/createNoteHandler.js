@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const createNoteHandler = async (note, token, noteDispatch) => {
   try {
@@ -8,12 +9,12 @@ const createNoteHandler = async (note, token, noteDispatch) => {
       { headers: { authorization: token } }
     );
 
-    if (response.status === 200 || response.status === 201) {
-      localStorage.setItem("note", response.data.notes);
+    if (response.status === 201) {
       noteDispatch({ type: "ADD_NOTES", payload: response.data.notes });
+      toast.success("Note successfully added");
     } else throw new Error();
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.errors[0]);
   }
 };
 

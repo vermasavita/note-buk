@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
 import "./notes.css";
+import { useAuth, useNote } from "../../context";
+import { getAllNotesHandler } from "../../services";
 
 const Notes = () => {
   const [createNoteModal, setCreateNoteModal] = useState(false);
+  const {
+    noteState: { notes },
+    noteDispatch,
+  } = useNote();
+
+  console.log(notes);
+  const {
+    authState: { token },
+  } = useAuth();
+
+  useEffect(() => {
+    getAllNotesHandler(token, noteDispatch);
+  }, []);
   return (
     <>
       <Navbar />
@@ -32,15 +47,15 @@ const Notes = () => {
               <h2>Pinned Notes</h2>
               <div className="saved-notes">
                 <NoteCard />
-                <NoteCard />
               </div>
             </div>
 
             <div className="notes-category">
               <h2>All Notes</h2>
               <div className="saved-notes">
-                <NoteCard />
-                <NoteCard />
+                {notes.map((note) => (
+                  <NoteCard key={note._id} {...note} />
+                ))}
               </div>
             </div>
           </div>

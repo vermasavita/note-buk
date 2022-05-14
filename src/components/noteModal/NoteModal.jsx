@@ -1,7 +1,40 @@
 import { RichTextEditor } from "../richTextEditor/RichTextEditor";
 import "./note-modal.css";
+import { useAuth, useNote } from "../../context";
+import { createNoteHandler } from "../../services";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const NoteModal = ({ setCreateNoteModal }) => {
+  const { noteDispatch } = useNote();
+  const {
+    authState: { token },
+  } = useAuth();
+  const [newNote, setNewNote] = useState({ title: "", content: "" });
+
+  const inputHandler = (event) => {
+    const { id, value } = event.target;
+    setNewNote((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const validateInput = () => {
+    if (newNote.title === "") {
+      toast.warning("Add Note Title");
+    } else if (newNote.content === "") {
+      toast.warning("Add Note Content");
+    } else {
+      return true;
+    }
+  };
+
+  const callCreateNoteHandler = () => {
+    const note = { ...newNote };
+    if (validateInput()) {
+      createNoteHandler(note, token, noteDispatch);
+      setCreateNoteModal(false);
+    }
+  };
+
   return (
     <div className="modal">
       <div className="modal-container">
@@ -15,8 +48,15 @@ const NoteModal = ({ setCreateNoteModal }) => {
           </button>
         </div>
         <div className="modal-body">
-          <input type="text" placeholder="Title" className="title" />
-          <RichTextEditor/>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            className="title"
+            value={newNote.title}
+            onChange={inputHandler}
+          />
+          <RichTextEditor newNote={newNote} setNewNote={setNewNote} />
         </div>
         <div className="note-modal-action-container">
           <div className="options">
@@ -46,7 +86,9 @@ const NoteModal = ({ setCreateNoteModal }) => {
         </div>
         <div className="modal-footer">
           <button className="btn">Add label</button>
-          <button className="btn btn-icon">Create Note</button>
+          <button className="btn btn-icon" onClick={callCreateNoteHandler}>
+            Create Note
+          </button>
         </div>
       </div>
     </div>
