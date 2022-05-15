@@ -11,7 +11,7 @@ const createNoteHandler = async (note, token, noteDispatch) => {
 
     if (response.status === 201) {
       noteDispatch({ type: "ADD_NOTES", payload: response.data.notes });
-      toast.success("Note successfully added");
+      toast.success("Note Successfully Added");
     } else throw new Error();
   } catch (error) {
     toast.error(error.response.data.errors[0]);

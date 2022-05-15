@@ -1,16 +1,18 @@
 import { RichTextEditor } from "../richTextEditor/RichTextEditor";
 import "./note-modal.css";
 import { useAuth, useNote } from "../../context";
-import { createNoteHandler } from "../../services";
+import { createNoteHandler, updateNoteHandler } from "../../services";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const NoteModal = ({ setCreateNoteModal }) => {
+const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
+  const [newNote, setNewNote] = useState(
+    updateNote ?? { title: "", content: "" }
+  );
   const { noteDispatch } = useNote();
   const {
     authState: { token },
   } = useAuth();
-  const [newNote, setNewNote] = useState({ title: "", content: "" });
 
   const inputHandler = (event) => {
     const { id, value } = event.target;
@@ -30,7 +32,10 @@ const NoteModal = ({ setCreateNoteModal }) => {
   const callCreateNoteHandler = () => {
     const note = { ...newNote };
     if (validateInput()) {
-      createNoteHandler(note, token, noteDispatch);
+      updateNote
+        ? updateNoteHandler(note, token, noteDispatch)
+        : createNoteHandler(note, token, noteDispatch);
+        setUpdateNote(null);
       setCreateNoteModal(false);
     }
   };
@@ -87,7 +92,7 @@ const NoteModal = ({ setCreateNoteModal }) => {
         <div className="modal-footer">
           <button className="btn">Add label</button>
           <button className="btn btn-icon" onClick={callCreateNoteHandler}>
-            Create Note
+            Save Note
           </button>
         </div>
       </div>
