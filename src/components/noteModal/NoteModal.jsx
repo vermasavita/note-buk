@@ -4,6 +4,7 @@ import { useAuth, useNote } from "../../context";
 import { createNoteHandler, updateNoteHandler } from "../../services";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { formatDate } from "../../backend/utils/authUtils";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
@@ -36,7 +37,7 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   };
 
   const callCreateNoteHandler = () => {
-    const note = { ...newNote };
+    const note = { ...newNote, date: formatDate() };
     if (validateInput()) {
       updateNote
         ? updateNoteHandler(note, token, noteDispatch)

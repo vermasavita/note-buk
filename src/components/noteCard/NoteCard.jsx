@@ -18,6 +18,13 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
     e.preventDefault();
     notePinHandler(note, token, noteDispatch);
   };
+
+  const getDate = (date) => {
+    const currTime = date.slice(11, 16); 
+    const currDate = date.slice(0, 10).split("-").reverse().join("-");
+    return ` ${currDate} ${currTime}`;
+  } 
+
   return (
     <>
       <div className={`note-card-container ${note.color}`} key={note._id}>
@@ -43,7 +50,7 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             <p>{ReactHtmlParser(note.content)}</p>
           </div>
           <div className="note-date">
-            <p>Created on 26/10/2020</p>
+            <p>{getDate(note.date)}</p>
             <div className="note-action-container">
               <button onClick={updateNoteHandlerR}>
                 <i className="bx bx-pencil"></i>
