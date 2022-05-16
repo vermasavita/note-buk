@@ -13,7 +13,7 @@ const modules = {
   ],
 };
 
-const RichTextEditor = () => {
+const RichTextEditor = ({ newNote, setNewNote }) => {
   return (
     <ReactQuill
       theme="snow"
@@ -21,6 +21,9 @@ const RichTextEditor = () => {
       modules={modules}
       placeholder="Add note text here....."
       className="rich-text-edior"
+      id="content"
+      value={newNote.content}
+      onChange={(value) => setNewNote((prev) => ({ ...prev, content: value }))}
     />
   );
 };
