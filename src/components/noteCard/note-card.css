@@ -8,7 +8,7 @@
 }
 
 .red{
-  background-color: var(--red-color);
+  background-color: var(--red-color2);
 }
 
 
@@ -52,6 +52,20 @@
 
 .note-title span {
   font-size: 1.7rem;
+}
+
+.Low{
+  color: var(--yellow-color);
+  font-weight: bolder;
+}
+.Medium{
+  color: var(--green-color);
+  font-weight: bolder;
+}
+
+.High{
+  color: var(--red-color);
+  font-weight: bolder;
 }
 
 .form-control p {

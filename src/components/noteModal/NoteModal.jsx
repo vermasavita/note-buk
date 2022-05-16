@@ -7,7 +7,13 @@ import { toast } from "react-toastify";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
-    updateNote ?? { title: "", content: "", color: "Default", isPinned: false, }
+    updateNote ?? {
+      title: "",
+      content: "",
+      color: "Default",
+      isPinned: false,
+      priority: "Low",
+    }
   );
   const { noteDispatch } = useNote();
   const {
@@ -77,11 +83,11 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
             </select>
           </div>
           <div className="options">
-            <label htmlFor="tag">Prioriy: </label>
-            <select name="tag" id="tag">
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
+            <label htmlFor="tag">Priority: </label>
+            <select name="priority" id="priority" value={newNote.priority} onChange={inputHandler}>
+              <option value="Low" >Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select>
           </div>
           <div className="options">

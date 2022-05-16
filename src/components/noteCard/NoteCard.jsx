@@ -1,10 +1,8 @@
 import "./note-card.css";
 import ReactHtmlParser from "react-html-parser";
 import { notePinHandler } from "../../services";
-import { useState } from "react";
 import { useAuth, useNote } from "../../context";
 const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
-  const [pinBtnDisable, setPinBtnDisable] = useState(false);
   const {
     authState: { token },
   } = useAuth();
@@ -28,11 +26,10 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             <div className="note-title">
               <h1>{note.title}</h1>
               <div className="note-title-action">
-                <span>meduim</span>
+                <span className={`${note.priority}`}>{note.priority}</span>
                 <button
                   className="pin-btn"
                   title="Pin"
-                  // disabled={pinBtnDisable}
                   onClick={callNotePinHandler}
                 >
                   <i
