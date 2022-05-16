@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
-    updateNote ?? { title: "", content: "", color: "Default" }
+    updateNote ?? { title: "", content: "", color: "Default", isPinned: false, }
   );
   const { noteDispatch } = useNote();
   const {

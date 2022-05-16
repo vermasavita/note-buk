@@ -39,6 +39,17 @@
   gap: 2rem;
   align-items: center;
 }
+
+.pin-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  color: var(--ligtest-color);
+  cursor: pointer;
+}
+
 .note-title span {
   font-size: 1.7rem;
 }

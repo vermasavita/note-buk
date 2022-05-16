@@ -3,6 +3,7 @@ import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
 import "./notes.css";
 import { useAuth, useNote } from "../../context";
 import { getAllNotesHandler } from "../../services";
+import { getPinnedAndUnpinnedNotes } from "../../utils/pinNote";
 
 const Notes = () => {
   const [createNoteModal, setCreateNoteModal] = useState(false);
@@ -20,6 +21,9 @@ const Notes = () => {
   useEffect(() => {
     getAllNotesHandler(token, noteDispatch);
   }, []);
+
+  //pinNote
+  const { pinNote, unpinNote } = getPinnedAndUnpinnedNotes(notes);
   return (
     <>
       <Navbar />
@@ -44,26 +48,40 @@ const Notes = () => {
             </div>
           </div>
           <div className="notes-category-container">
-            {/* <div className="notes-category">
-              <h2>Pinned Notes</h2>
-              <div className="saved-notes">
-                <NoteCard />
+            {pinNote.length > 0 ? (
+              <div className="notes-category">
+                <h2>Pinned Notes</h2>
+                <div className="saved-notes">
+                  {pinNote.map((note) => (
+                    <NoteCard
+                      key={note._id}
+                      {...note}
+                      note={note}
+                      setCreateNoteModal={setCreateNoteModal}
+                      setUpdateNote={setUpdateNote}
+                    />
+                  ))}
+                </div>
               </div>
-            </div> */}
+            ) : null}
 
             <div className="notes-category">
-              <h2>All Notes</h2>
-              <div className="saved-notes">
-                {notes.map((note) => (
-                  <NoteCard
-                    key={note._id}
-                    {...note}
-                    note={note}
-                    setCreateNoteModal={setCreateNoteModal}
-                    setUpdateNote={setUpdateNote}
-                  />
-                ))}
-              </div>
+              {unpinNote.length > 0 ? (
+                <>
+                  <h2>All Notes</h2>
+                  <div className="saved-notes">
+                    {unpinNote.map((note) => (
+                      <NoteCard
+                        key={note._id}
+                        {...note}
+                        note={note}
+                        setCreateNoteModal={setCreateNoteModal}
+                        setUpdateNote={setUpdateNote}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : null}
             </div>
           </div>
         </div>

@@ -1,10 +1,14 @@
 import "./note-card.css";
 import ReactHtmlParser from "react-html-parser";
-const NoteCard = ({
-  note,
-  setUpdateNote,
-  setCreateNoteModal,
-}) => {
+import { notePinHandler } from "../../services";
+import { useState } from "react";
+import { useAuth, useNote } from "../../context";
+const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
+  const [pinBtnDisable, setPinBtnDisable] = useState(false);
+  const {
+    authState: { token },
+  } = useAuth();
+  const { noteDispatch } = useNote();
 
   const updateNoteHandlerR = (e) => {
     e.preventDefault();
@@ -12,7 +16,10 @@ const NoteCard = ({
     setCreateNoteModal(true);
   };
 
-  console.log(note.color)
+  const callNotePinHandler = (e) => {
+    e.preventDefault();
+    notePinHandler(note, token, noteDispatch);
+  };
   return (
     <>
       <div className={`note-card-container ${note.color}`} key={note._id}>
@@ -22,9 +29,16 @@ const NoteCard = ({
               <h1>{note.title}</h1>
               <div className="note-title-action">
                 <span>meduim</span>
-                <span>
-                  <i className="bx bxs-pin"></i>
-                </span>
+                <button
+                  className="pin-btn"
+                  title="Pin"
+                  // disabled={pinBtnDisable}
+                  onClick={callNotePinHandler}
+                >
+                  <i
+                    className={`${note.isPinned ? "bx bxs-pin" : "bx bx-pin"}`}
+                  ></i>
+                </button>
               </div>
             </div>
           </div>
