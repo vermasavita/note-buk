@@ -59,6 +59,26 @@
   height: 15rem;
 }
 
+.rich-text-edior.red > .ql-snow{
+  background-color: var(--red-color);
+}
+
+
+.rich-text-edior.blue > .ql-snow{
+  background-color: var(--blue-color);
+}
+
+.rich-text-edior.grey > .ql-snow{
+  background-color: var(--light-color);
+}
+
+.rich-text-edior.purple > .ql-snow{
+  background-color: var(--purple-color);
+}
+
+.rich-text-edior.pink > .ql-snow{
+  background-color: var(--pink-color);
+}
 
 .note-modal-action-container {
   display: flex;

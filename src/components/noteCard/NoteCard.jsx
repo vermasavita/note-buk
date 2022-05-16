@@ -12,10 +12,10 @@ const NoteCard = ({
     setCreateNoteModal(true);
   };
 
-  
+  console.log(note.color)
   return (
     <>
-      <div className="note-card-container" key={note._id}>
+      <div className={`note-card-container ${note.color}`} key={note._id}>
         <form>
           <div className="form-control">
             <div className="note-title">

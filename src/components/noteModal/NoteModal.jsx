@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
-    updateNote ?? { title: "", content: "" }
+    updateNote ?? { title: "", content: "", color: "Default" }
   );
   const { noteDispatch } = useNote();
   const {
@@ -35,7 +35,7 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
       updateNote
         ? updateNoteHandler(note, token, noteDispatch)
         : createNoteHandler(note, token, noteDispatch);
-        setUpdateNote(null);
+      setUpdateNote(null);
       setCreateNoteModal(false);
     }
   };
@@ -61,7 +61,11 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
             value={newNote.title}
             onChange={inputHandler}
           />
-          <RichTextEditor newNote={newNote} setNewNote={setNewNote} />
+          <RichTextEditor
+            newNote={newNote}
+            setNewNote={setNewNote}
+            className={newNote.color}
+          />
         </div>
         <div className="note-modal-action-container">
           <div className="options">
@@ -81,11 +85,19 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
             </select>
           </div>
           <div className="options">
-            <label htmlFor="tag">Color: </label>
-            <select name="tag" id="tag">
-              <option>Red</option>
-              <option>Orange</option>
-              <option>Pink</option>
+            <label htmlFor="color">Color: </label>
+            <select
+              name="color"
+              id="color"
+              value={newNote.color}
+              onChange={inputHandler}
+            >
+              <option>Default</option>
+              <option value="red">Red</option>
+              <option value="pink">Pink</option>
+              <option value="grey">Grey</option>
+              <option value="purple">Purple</option>
+              <option value="blue">Blue</option>
             </select>
           </div>
         </div>

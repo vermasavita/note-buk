@@ -20,7 +20,7 @@ const RichTextEditor = ({ newNote, setNewNote }) => {
       formats={formats}
       modules={modules}
       placeholder="Add note text here....."
-      className="rich-text-edior"
+      className={`rich-text-edior ${newNote.color}`}
       id="content"
       value={newNote.content}
       onChange={(value) => setNewNote((prev) => ({ ...prev, content: value }))}

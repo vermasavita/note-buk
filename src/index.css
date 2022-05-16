@@ -12,7 +12,10 @@
   --light-color: rgb(209, 209, 209);
   --ligtest-color: rgb(131, 131, 131);
   --black-color: #000;
-  --blue-color: #5878e5;
+  --blue-color: #90aaff;
+  --purple-color: rgb(255, 157, 255);
+  --pink-color: pink;
+  --red-color: rgb(255, 106, 106);
 }
 
 html {
