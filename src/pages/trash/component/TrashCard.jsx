@@ -1,6 +1,6 @@
 import HtmlParser from "react-html-parser/lib/HtmlParser";
 import { useAuth, useNote, useTrash } from "../../../context";
-import { restoreFromTrashHandler } from "../../../services"
+import { restoreFromTrashHandler, deleteFromTrashHandler } from "../../../services"
 const TrashCard = ({ trashData }) => {
   const { noteDispatch } = useNote();
   const {
@@ -22,7 +22,14 @@ const TrashCard = ({ trashData }) => {
       trashNoteDispatch
     );
   };
-  // -------------------
+
+
+  //deleteFromTrash
+
+const callDeleteFromTrashHandler = (event) => {
+  event.preventDefault();
+  deleteFromTrashHandler(trashData, token, trashNoteDispatch)
+}
 
 
   
@@ -60,7 +67,7 @@ const TrashCard = ({ trashData }) => {
           <div className="note-date">
             <p>{getDate(trashData.date)}</p>
             <div className="note-action-container">
-              <button>
+              <button onClick={callDeleteFromTrashHandler}>
                 <i className="bx bx-trash-alt"></i>
               </button>
               <button onClick={callRestoreFromTrashHandler}>

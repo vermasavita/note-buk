@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const deleteFromTrashHandler = async (_id, token, trashNoteDispatch) => {
+const deleteFromTrashHandler = async (note, token, trashNoteDispatch) => {
   try {
-    const response = await axios.delete(`/api/trash/delete/${_id}`, {
+    const response = await axios.delete(`/api/trash/delete/${note._id}`, {
       headers: { authorization: token },
     });
 
-    if (response.status === 200 || response.status === 201) {
+    if (response.status === 200) {
       trashNoteDispatch({
         type: "DELETE_FROM_TRASH",
         payload: response.data.trash,
