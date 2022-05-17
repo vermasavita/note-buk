@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
+import { Navbar, NoteCard, SideBar, NoteModal, Filter } from "../../components";
 import "./notes.css";
-import { useAuth, useNote, useTrash } from "../../context";
+import { useAuth, useNote } from "../../context";
 import { getAllNotesHandler } from "../../services";
 import { getPinnedAndUnpinnedNotes } from "../../utils/pinNote";
 
 const Notes = () => {
   const [createNoteModal, setCreateNoteModal] = useState(false);
   const [updateNote, setUpdateNote] = useState(null);
+  const [ showFilter, setShowFilter ] = useState(false);
 
   const {
     noteState: { notes },
@@ -36,16 +37,19 @@ const Notes = () => {
           <div className="create-note-head">
             <h1>Notes</h1>
             <div className="note-head-action">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon" onClick={() => setShowFilter((prev) => !prev)}>
                 <i className="bx bx-filter"></i>
                 Filter
               </button>
               <button
                 className="btn btn-icon note-btn"
-                onClick={() => setCreateNoteModal(true)}
+                // onClick={() => setCreateNoteModal(true)}
               >
                 <i className="bx bx-plus"></i>Create Note
               </button>
+              {/* <div>
+                <Filter/>
+              </div> */}
             </div>
           </div>
           <div className="notes-category-container">
