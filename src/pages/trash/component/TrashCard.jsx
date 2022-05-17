@@ -2,6 +2,7 @@ import HtmlParser from "react-html-parser/lib/HtmlParser";
 import { useAuth, useNote, useTrash } from "../../../context";
 import { getDate } from "../../../utils/getDate";
 import { restoreFromTrashHandler, deleteFromTrashHandler } from "../../../services"
+import { capitalizeStr } from "../../../utils/capitalizeStr";
 const TrashCard = ({ trashData }) => {
   const { noteDispatch } = useNote();
   const {
@@ -12,7 +13,7 @@ const TrashCard = ({ trashData }) => {
     authState: { token },
   } = useAuth();  
 
-  //restoreFromTrashHandler
+//restoreFromTrashHandler
 
   const callRestoreFromTrashHandler = (event) => {
     event.preventDefault();
@@ -25,7 +26,7 @@ const TrashCard = ({ trashData }) => {
   };
 
 
-  //deleteFromTrash
+//deleteFromTrash
 
 const callDeleteFromTrashHandler = (event) => {
   event.preventDefault();
@@ -44,7 +45,7 @@ const callDeleteFromTrashHandler = (event) => {
             <div className="note-title">
               <h1>{trashData.title}</h1>
               <div className="note-title-action">
-                <span>{trashData.priority}</span>
+                <span className={`${trashData.priority}`}>{trashData.priority.toUpperCase()}</span>
                 <button className="pin-btn" title="Pin">
                   <i
                     className={`${
@@ -56,8 +57,11 @@ const callDeleteFromTrashHandler = (event) => {
             </div>
           </div>
           <div className="form-control">
-            <div>{HtmlParser(trashData.content)}</div>
+            <div className="form-control-content">{HtmlParser(trashData.content)}</div>
           </div>
+          {trashData.tag !== "" ? (
+            <div className="tagName">{capitalizeStr(trashData.tag)}</div>
+          ) : null}
           <div className="note-date">
             <p>{getDate(trashData.date)}</p>
             <div className="note-action-container">

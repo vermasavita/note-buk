@@ -11,11 +11,13 @@ const deleteFromTrashHandler = async (note, token, trashNoteDispatch) => {
         type: "DELETE_FROM_TRASH",
         payload: response.data.trash,
       });
+
+      toast.success("Note Deleted from Trash");
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.errors[0]);
   }
 };
 

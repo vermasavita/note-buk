@@ -22,10 +22,10 @@ const EditTagModal = ({ tagModal, setTagModal }) => {
         setNewTag("");
         setTagModal(false);
       } else {
-        toast.info("Tag Already Exist");
+        toast.warning("Tag Already Exist");
       }
     } else {
-      toast.info("Enter a Tag Name");
+      toast.warning("Enter a Tag Name");
     }
   };
 

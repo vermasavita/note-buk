@@ -27,7 +27,7 @@ const restoreFromTrashHandler = async (
         type: "DELETE_FROM_TRASH",
         payload: response.data.trash,
       });
-      toast.success("Note successfully restored from trash");
+      toast.success("Note successfully Restored from Trash");
     } else {
       throw new Error();
     }

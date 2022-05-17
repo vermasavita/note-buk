@@ -38,7 +38,7 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
     e.preventDefault();
     notePinHandler(note, token, noteDispatch);
   };
-  
+
   return (
     <>
       <div className={`note-card-container ${note.color}`} key={note._id}>
@@ -47,7 +47,9 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             <div className="note-title">
               <h1>{note.title}</h1>
               <div className="note-title-action">
-                <span className={`${note.priority}`}>{note.priority}</span>
+                <span className={`${note.priority}`}>
+                  {note.priority.toUpperCase()}
+                </span>
                 <button
                   className="pin-btn"
                   title="Pin"
@@ -61,7 +63,9 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             </div>
           </div>
           <div className="form-control">
-            <div>{HtmlParser(note.content)}</div>
+            <div className="form-control-content">
+              {HtmlParser(note.content)}
+            </div>
           </div>
           {note.tag !== "" ? (
             <div className="tagName">{capitalizeStr(note.tag)}</div>
@@ -81,7 +85,7 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             </div>
           </div>
         </form>
-      </div>
+        </div>
     </>
   );
 };

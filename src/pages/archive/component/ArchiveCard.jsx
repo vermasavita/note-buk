@@ -5,6 +5,7 @@ import {
   restoreFromArchiveHandler,
 } from "../../../services";
 import { useArchive, useAuth, useNote, useTrash } from "../../../context";
+import { capitalizeStr } from "../../../utils/capitalizeStr";
 
 const ArchiveCard = ({ archiveData }) => {
   const {
@@ -45,7 +46,9 @@ const ArchiveCard = ({ archiveData }) => {
             <div className="note-title">
               <h1>{archiveData.title}</h1>
               <div className="note-title-action">
-                <span>{archiveData.priority}</span>
+                <span className={`${archiveData.priority}`}>
+                  {archiveData.priority.toUpperCase()}
+                </span>
                 <button className="pin-btn" title="Pin">
                   <i
                     className={`${
@@ -57,8 +60,13 @@ const ArchiveCard = ({ archiveData }) => {
             </div>
           </div>
           <div className="form-control">
-            <div>{HtmlParser(archiveData.content)}</div>
+            <div className="form-control-content">
+              {HtmlParser(archiveData.content)}
+            </div>
           </div>
+          {archiveData.tag !== "" ? (
+            <div className="tagName">{capitalizeStr(archiveData.tag)}</div>
+          ) : null}
           <div className="note-date">
             <p>{getDate(archiveData.date)}</p>
             <div className="note-action-container">
