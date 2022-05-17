@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useTag } from "../../context";
 import "./edit-tag-modal.css";
-import { capitalizeStr } from "../../utils/capitalizeStr"
+import { capitalizeStr } from "../../utils/capitalizeStr";
 
 const EditTagModal = ({ tagModal, setTagModal }) => {
   const [newTag, setNewTag] = useState("");
@@ -28,6 +28,7 @@ const EditTagModal = ({ tagModal, setTagModal }) => {
       toast.info("Enter a Tag Name");
     }
   };
+
 
   return (
     <>

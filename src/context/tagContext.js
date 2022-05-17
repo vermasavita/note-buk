@@ -11,7 +11,6 @@ const TagProvider = ({ children }) => {
     ],
   });
 
-  console.log(tagState.tags)
   return (
     <TagContext.Provider value={{ tagState, tagDispatch }}>
       {children}
