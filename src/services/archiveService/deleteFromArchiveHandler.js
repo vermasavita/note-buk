@@ -22,12 +22,12 @@ const deleteFromArchivesHandler = async (
         type: "MOVE_TO_TRASH",
         payload: response.data.trash,
       });
-      toast.success("Note deleted from archive");
+      toast.success("Note Deleted from Archive");
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.errors[0])
   }
 };
 

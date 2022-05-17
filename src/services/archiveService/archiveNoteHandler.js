@@ -25,7 +25,7 @@ const archiveNoteHandler = async (
         payload: response.data.notes,
       });
 
-      toast.success("Note added to archive");
+      toast.success("Note Added to Archive");
     } else throw new Error();
   } catch (error) {
     toast.error(error.response.data.errors[0]);

@@ -1,7 +1,10 @@
 import HtmlParser from "react-html-parser/lib/HtmlParser";
 import { getDate } from "../../../utils/getDate";
-import { deleteFromArchivesHandler } from "../../../services";
-import { useArchive, useAuth, useTrash } from "../../../context";
+import {
+  deleteFromArchivesHandler,
+  restoreFromArchiveHandler,
+} from "../../../services";
+import { useArchive, useAuth, useNote, useTrash } from "../../../context";
 
 const ArchiveCard = ({ archiveData }) => {
   const {
@@ -9,12 +12,28 @@ const ArchiveCard = ({ archiveData }) => {
   } = useAuth();
   const { archiveNoteDispatch } = useArchive();
   const { trashNoteDispatch } = useTrash();
+  const { noteDispatch } = useNote();
 
   const callDeleteFromArchivesHandler = (e) => {
     e.preventDefault();
-    deleteFromArchivesHandler(archiveData, token, archiveNoteDispatch, trashNoteDispatch);
+    deleteFromArchivesHandler(
+      archiveData,
+      token,
+      archiveNoteDispatch,
+      trashNoteDispatch
+    );
   };
 
+  const callRestoreFromArchiveHandler = (event) => {
+    event.preventDefault();
+
+    restoreFromArchiveHandler(
+      token,
+      archiveData,
+      noteDispatch,
+      archiveNoteDispatch
+    );
+  };
   return (
     <>
       <div
@@ -46,7 +65,7 @@ const ArchiveCard = ({ archiveData }) => {
               <button onClick={callDeleteFromArchivesHandler}>
                 <i className="bx bx-trash-alt"></i>
               </button>
-              <button>
+              <button onClick={callRestoreFromArchiveHandler}>
                 <i className="bx bx-upvote"></i>
               </button>
             </div>

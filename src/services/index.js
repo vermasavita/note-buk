@@ -11,3 +11,4 @@ export { deleteFromTrashHandler } from "./trashService/deleteFromTrash";
 export { getAllArchiveNotesHandler } from "./archiveService/getAllArchiveNote";
 export { archiveNoteHandler } from "./archiveService/archiveNoteHandler";
 export { deleteFromArchivesHandler } from "./archiveService/deleteFromArchiveHandler";
+export { restoreFromArchiveHandler } from "./archiveService/restoreFromArchiveHandler";
