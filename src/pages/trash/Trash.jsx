@@ -4,9 +4,10 @@ import { getAllTrashNotesHandler } from "../../services";
 import { useAuth, useTrash } from "../../context";
 import { useEffect } from "react";
 const Trash = () => {
-  const { trashNoteDispatch } = useTrash();
+  const { trashNoteState: {trash}, trashNoteDispatch } = useTrash();
   const { authState: { token }} = useAuth();
 
+  console.log(trash);
   useEffect(() => {
     getAllTrashNotesHandler(token, trashNoteDispatch);
   }, []);
@@ -21,7 +22,7 @@ const Trash = () => {
           <div className="notes-category">
             <h1>Trash Notes</h1>
             <div className="saved-notes">
-              <TrashCard />
+              {trash.map(trashData => (<TrashCard key={trashData._id} trashData={trashData}/>))}
             </div>
           </div>
         </div>

@@ -1,20 +1,20 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const trashNoteHandler = async (
-  _id,
+  note,
   token,
   trashNoteDispatch,
   noteDispatch
 ) => {
   try {
-    const response = await axios({
-      method: "POST",
-      url: `/api/trash/${_id}`,
-      headers: { authorization: token },
-    });
+    const response = await axios.post(
+      `/api/notes/trash/${note._id}`,
+      { note },
+      { headers: { authorization: token } }
+    );
 
     if (response.status === 201) {
-      localStorage.setItem("note", response.data.notes);
       trashNoteDispatch({
         type: "MOVE_TO_TRASH",
         payload: response.data.trash,
@@ -23,9 +23,11 @@ const trashNoteHandler = async (
         type: "DELETE_NOTE_FROM_HOME",
         payload: response.data.notes,
       });
+
+      toast.success("Note added to Trash");
     } else throw new Error();
   } catch (error) {
-    console.log(error.response);
+    toast.error(error.response.data.errors[0])
   }
 };
 

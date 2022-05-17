@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
 import "./notes.css";
-import { useAuth, useNote } from "../../context";
+import { useAuth, useNote, useTrash } from "../../context";
 import { getAllNotesHandler } from "../../services";
 import { getPinnedAndUnpinnedNotes } from "../../utils/pinNote";
 
@@ -18,6 +18,7 @@ const Notes = () => {
     authState: { token },
   } = useAuth();
 
+  
   useEffect(() => {
     getAllNotesHandler(token, noteDispatch);
   }, []);

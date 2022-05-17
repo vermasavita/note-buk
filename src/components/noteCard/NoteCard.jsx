@@ -1,13 +1,22 @@
 import "./note-card.css";
 import HtmlParser from "react-html-parser/lib/HtmlParser";
-import { notePinHandler } from "../../services";
-import { useAuth, useNote } from "../../context";
+import { notePinHandler, trashNoteHandler } from "../../services";
+import { useAuth, useNote, useTrash } from "../../context";
 import { capitalizeStr } from "../../utils/capitalizeStr";
 const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
   const {
     authState: { token },
   } = useAuth();
   const { noteDispatch } = useNote();
+  const { trashNoteDispatch } = useTrash();
+  //trash
+
+  const callTrashNoteHandler = (e) => {
+    e.preventDefault();
+    trashNoteHandler(note, token, trashNoteDispatch, noteDispatch)
+  }
+
+  // ...................
 
   const updateNoteHandler = (e) => {
     e.preventDefault();
@@ -60,7 +69,7 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
               <button>
                 <i className="bx bx-archive-in"></i>
               </button>
-              <button>
+              <button onClick={callTrashNoteHandler}>
                 <i className="bx bx-trash-alt"></i>
               </button>
             </div>
