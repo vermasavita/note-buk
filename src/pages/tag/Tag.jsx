@@ -23,7 +23,7 @@ const Tag = () => {
         </div>
         <div className="sub-container">
    
-            <div className="notes-category">
+            <div className="notes-category ">
               <h1>{capitalizeStr(tagName)} Notes</h1>
               {notes
                 .filter((note) => note.tag.includes(tagName))

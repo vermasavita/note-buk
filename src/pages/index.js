@@ -5,3 +5,4 @@ export { Archive } from "./archive/Archive";
 export { Trash } from "./trash/Trash";
 export { Home } from "./home/Home";
 export { Tag } from "./tag/Tag";
+export { Error404 } from "./Error404/Error404";
