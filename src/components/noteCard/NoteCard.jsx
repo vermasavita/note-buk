@@ -7,6 +7,7 @@ import {
 } from "../../services";
 import { useArchive, useAuth, useNote, useTrash } from "../../context";
 import { capitalizeStr } from "../../utils/capitalizeStr";
+import { getDate } from "../../utils/getDate";
 const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
   const {
     authState: { token },
@@ -37,13 +38,7 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
     e.preventDefault();
     notePinHandler(note, token, noteDispatch);
   };
-
-  const getDate = (date) => {
-    const currTime = date.slice(11, 16);
-    const currDate = date.slice(0, 10).split("-").reverse().join("-");
-    return ` ${currDate} ${currTime}`;
-  };
-
+  
   return (
     <>
       <div className={`note-card-container ${note.color}`} key={note._id}>

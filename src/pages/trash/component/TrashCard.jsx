@@ -1,5 +1,6 @@
 import HtmlParser from "react-html-parser/lib/HtmlParser";
 import { useAuth, useNote, useTrash } from "../../../context";
+import { getDate } from "../../../utils/getDate";
 import { restoreFromTrashHandler, deleteFromTrashHandler } from "../../../services"
 const TrashCard = ({ trashData }) => {
   const { noteDispatch } = useNote();
@@ -31,13 +32,6 @@ const callDeleteFromTrashHandler = (event) => {
   deleteFromTrashHandler(trashData, token, trashNoteDispatch)
 }
 
-
-  
-  const getDate = (date) => {
-    const currTime = date.slice(11, 16);
-    const currDate = date.slice(0, 10).split("-").reverse().join("-");
-    return ` ${currDate} ${currTime}`;
-  };
 
   return (
     <>

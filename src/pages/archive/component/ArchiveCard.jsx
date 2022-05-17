@@ -1,10 +1,18 @@
 import HtmlParser from "react-html-parser/lib/HtmlParser";
+import { getDate } from "../../../utils/getDate";
+import { deleteFromArchivesHandler } from "../../../services";
+import { useArchive, useAuth, useTrash } from "../../../context";
 
 const ArchiveCard = ({ archiveData }) => {
-  const getDate = (date) => {
-    const currTime = date.slice(11, 16);
-    const currDate = date.slice(0, 10).split("-").reverse().join("-");
-    return ` ${currDate} ${currTime}`;
+  const {
+    authState: { token },
+  } = useAuth();
+  const { archiveNoteDispatch } = useArchive();
+  const { trashNoteDispatch } = useTrash();
+
+  const callDeleteFromArchivesHandler = (e) => {
+    e.preventDefault();
+    deleteFromArchivesHandler(archiveData, token, archiveNoteDispatch, trashNoteDispatch);
   };
 
   return (
@@ -35,7 +43,7 @@ const ArchiveCard = ({ archiveData }) => {
           <div className="note-date">
             <p>{getDate(archiveData.date)}</p>
             <div className="note-action-container">
-              <button>
+              <button onClick={callDeleteFromArchivesHandler}>
                 <i className="bx bx-trash-alt"></i>
               </button>
               <button>
