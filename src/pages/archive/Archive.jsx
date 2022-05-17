@@ -5,11 +5,12 @@ import { getAllArchiveNotesHandler } from "../../services";
 import { useAuth, useArchive } from "../../context";
 const Archive = () => {
   const { authState: {token}} = useAuth();
-  const { archiveNoteDispatch } = useArchive();
+  const { archiveNoteState: {archive}, archiveNoteDispatch } = useArchive();
 
   useEffect(() => {
     getAllArchiveNotesHandler(token, archiveNoteDispatch);
   }, []);
+
   return (
     <>
       <Navbar />
@@ -21,7 +22,12 @@ const Archive = () => {
           <div className="notes-category">
             <h2>Archive Notes</h2>
             <div className="saved-notes">
-              <ArchiveCard />
+              {archive.map((archiveData) => (
+                <ArchiveCard
+                  key={archiveData._id}
+                  archiveData={archiveData}
+                />
+              ))}
             </div>
           </div>
         </div>

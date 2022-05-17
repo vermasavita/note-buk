@@ -9,3 +9,4 @@ export { trashNoteHandler } from "./trashService/trashNoteHandler";
 export { restoreFromTrashHandler } from "./trashService/restoreFromTrash";   
 export { deleteFromTrashHandler } from "./trashService/deleteFromTrash";
 export { getAllArchiveNotesHandler } from "./archiveService/getAllArchiveNote";
+export { archiveNoteHandler } from "./archiveService/archiveNoteHandler";
