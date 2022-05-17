@@ -21,7 +21,6 @@ import {
   deleteFromTrashHandler,
   getAllTrashNotesHandler,
   restoreFromTrashHandler,
-  trashNoteHandler
 } from "./backend/controllers/TrashController";
 import { users } from "./backend/db/users";
 
@@ -78,7 +77,6 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/trash", getAllTrashNotesHandler.bind(this));
       this.post("/trash/restore/:noteId", restoreFromTrashHandler.bind(this));
       this.delete("/trash/delete/:noteId", deleteFromTrashHandler.bind(this));
-      this.post("/trash/:noteId", trashNoteHandler.bind(this));
     },
   });
   return server;

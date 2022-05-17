@@ -5,7 +5,7 @@ const TrashContext = createContext(null);
 
 const TrashProvider = ({ children }) => {
   const [trashNoteState, trashNoteDispatch] = useReducer(trashReducer, {
-    trashedNote: [],
+    trash: [],
   });
 
   return (

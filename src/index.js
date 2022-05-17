@@ -9,6 +9,7 @@ import {
   NoteProvider,
   SidebarProvider,
   TagProvider,
+  TrashProvider,
 } from "./context";
 
 // Call make Server
@@ -21,7 +22,9 @@ ReactDOM.render(
         <AuthProvider>
           <NoteProvider>
             <TagProvider>
-              <App />
+              <TrashProvider>
+                <App />
+              </TrashProvider>
             </TagProvider>
           </NoteProvider>
         </AuthProvider>
