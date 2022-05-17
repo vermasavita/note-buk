@@ -5,6 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import {
+  ArchiveProvider,
   AuthProvider,
   NoteProvider,
   SidebarProvider,
@@ -23,7 +24,9 @@ ReactDOM.render(
           <NoteProvider>
             <TagProvider>
               <TrashProvider>
-                <App />
+                <ArchiveProvider>
+                  <App />
+                </ArchiveProvider>
               </TrashProvider>
             </TagProvider>
           </NoteProvider>

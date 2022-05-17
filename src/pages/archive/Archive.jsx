@@ -1,6 +1,15 @@
 import { Navbar, SideBar } from "../../components";
 import { ArchiveCard } from "./component/ArchiveCard";
+import { useEffect } from "react";
+import { getAllArchiveNotesHandler } from "../../services";
+import { useAuth, useArchive } from "../../context";
 const Archive = () => {
+  const { authState: {token}} = useAuth();
+  const { archiveNoteDispatch } = useArchive();
+
+  useEffect(() => {
+    getAllArchiveNotesHandler(token, archiveNoteDispatch);
+  }, []);
   return (
     <>
       <Navbar />
