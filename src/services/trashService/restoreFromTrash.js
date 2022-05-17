@@ -1,16 +1,17 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const restoreFromTrashHandler = async (
-  _id,
   token,
-  note,
+  trashData,
   noteDispatch,
   trashNoteDispatch
 ) => {
+
   try {
     const response = await axios.post(
-      `/api/trash/restore/${_id}`,
-      { note },
+      `/api/trash/restore/${trashData._id}`,
+      {trashData},
       {
         headers: { authorization: token },
       }
@@ -26,11 +27,13 @@ const restoreFromTrashHandler = async (
         type: "DELETE_FROM_TRASH",
         payload: response.data.trash,
       });
+      toast.success("Note successfully restored from trash");
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    console.log(error)
+    // toast.error(error.response.data.errors[0])
   }
 };
 

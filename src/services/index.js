@@ -6,3 +6,4 @@ export { updateNoteHandler } from "./noteService/updateNoteHandler";
 export { notePinHandler } from "./noteService/pinNoteHandler";
 export { getAllTrashNotesHandler } from "./trashService/getAllTrashNote";
 export { trashNoteHandler } from "./trashService/trashNoteHandler";
+export { restoreFromTrashHandler } from "./trashService/restoreFromTrash";
