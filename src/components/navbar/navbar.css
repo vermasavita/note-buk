@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: var(--orange-color);
+  background-color: var(--blue-color);
 }
 .head-container {
   display: flex;

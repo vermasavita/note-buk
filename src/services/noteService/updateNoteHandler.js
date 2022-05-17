@@ -10,7 +10,7 @@ const updateNoteHandler = async (note, token, noteDispatch) => {
     );
     if (response.status === 201) {
       noteDispatch({ type: "UPDATE_NOTES", payload: response.data.notes });
-      toast.info("Note Successfully Updated");
+      toast.success("Note Successfully Updated");
     } else {
       throw new Error();
     }

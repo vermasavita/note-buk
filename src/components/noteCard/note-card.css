@@ -7,6 +7,27 @@
   border-radius: 5px;
 }
 
+.red{
+  background-color: var(--red-color2);
+}
+
+
+.blue{
+  background-color: var(--blue-color);
+}
+
+.grey{
+  background-color: var(--light-color);
+}
+
+.purple{
+  background-color: var(--purple-color);
+}
+
+.pink{
+  background-color: var(--pink-color);
+}
+
 .note-title {
   display: flex;
   justify-content: space-between;
@@ -18,8 +39,33 @@
   gap: 2rem;
   align-items: center;
 }
+
+.pin-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  color: var(--ligtest-color);
+  cursor: pointer;
+}
+
 .note-title span {
   font-size: 1.7rem;
+}
+
+.Low{
+  color: var(--yellow-color);
+  font-weight: bolder;
+}
+.Medium{
+  color: var(--green-color);
+  font-weight: bolder;
+}
+
+.High{
+  color: var(--red-color);
+  font-weight: bolder;
 }
 
 .form-control p {
@@ -31,6 +77,8 @@
 .note-date {
   display: flex;
   justify-content: space-between;
+  font-size: 1.2rem;
+  margin-top: 10px;
 }
 
 .note-date p {
@@ -55,6 +103,15 @@
 .note-action-container button i {
   font-size: 1.8rem;
   color: var(--ligtest-color);
+}
+
+.tagName{
+  font-size: 1.3rem;
+  border-radius: 10px;
+  background-color: var(--light-color);
+  display: inline;
+  padding: 2px 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 @media screen and (max-width: 900px) {

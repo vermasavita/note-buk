@@ -34,7 +34,7 @@
   color: var(--black-color);
 }
 .note-btn{
-    background-color: var(--orange-color);
+    background-color: var(--black-color);
     color: var(--white-color);
 }
 
@@ -56,3 +56,4 @@
   font-weight: 300;
 }
 
+/* tag */

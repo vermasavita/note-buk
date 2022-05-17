@@ -1,18 +1,31 @@
 import { RichTextEditor } from "../richTextEditor/RichTextEditor";
 import "./note-modal.css";
-import { useAuth, useNote } from "../../context";
+import { useAuth, useNote, useTag } from "../../context";
 import { createNoteHandler, updateNoteHandler } from "../../services";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { formatDate } from "../../backend/utils/authUtils";
+import { capitalizeStr } from "../../utils/capitalizeStr";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
-    updateNote ?? { title: "", content: "" }
+    updateNote ?? {
+      title: "",
+      content: "",
+      color: "Default",
+      isPinned: false,
+      priority: "Low",
+      tag: "",
+    }
   );
   const { noteDispatch } = useNote();
   const {
     authState: { token },
   } = useAuth();
+
+  const {
+    tagState: { tags },
+  } = useTag();
 
   const inputHandler = (event) => {
     const { id, value } = event.target;
@@ -30,12 +43,12 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   };
 
   const callCreateNoteHandler = () => {
-    const note = { ...newNote };
+    const note = { ...newNote, date: formatDate() };
     if (validateInput()) {
       updateNote
         ? updateNoteHandler(note, token, noteDispatch)
         : createNoteHandler(note, token, noteDispatch);
-        setUpdateNote(null);
+      setUpdateNote(null);
       setCreateNoteModal(false);
     }
   };
@@ -61,36 +74,61 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
             value={newNote.title}
             onChange={inputHandler}
           />
-          <RichTextEditor newNote={newNote} setNewNote={setNewNote} />
+          <RichTextEditor
+            newNote={newNote}
+            setNewNote={setNewNote}
+            className={newNote.color}
+          />
         </div>
         <div className="note-modal-action-container">
           <div className="options">
             <label htmlFor="tag">Tags: </label>
-            <select name="tag" id="tag">
+            <select
+              name="tag"
+              id="tag"
+              value={newNote.tag}
+              onChange={inputHandler}
+            >
               <option>None</option>
-              <option>Home</option>
-              <option>Work</option>
+
+              {tags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {capitalizeStr(tag)}
+                </option>
+              ))}
             </select>
           </div>
           <div className="options">
-            <label htmlFor="tag">Prioriy: </label>
-            <select name="tag" id="tag">
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
+            <label htmlFor="tag">Priority: </label>
+            <select
+              name="priority"
+              id="priority"
+              value={newNote.priority}
+              onChange={inputHandler}
+            >
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select>
           </div>
           <div className="options">
-            <label htmlFor="tag">Color: </label>
-            <select name="tag" id="tag">
-              <option>Red</option>
-              <option>Orange</option>
-              <option>Pink</option>
+            <label htmlFor="color">Color: </label>
+            <select
+              name="color"
+              id="color"
+              value={newNote.color}
+              onChange={inputHandler}
+            >
+              <option>Default</option>
+              <option value="red">Red</option>
+              <option value="pink">Pink</option>
+              <option value="grey">Grey</option>
+              <option value="purple">Purple</option>
+              <option value="blue">Blue</option>
             </select>
           </div>
         </div>
         <div className="modal-footer">
-          <button className="btn">Add label</button>
           <button className="btn btn-icon" onClick={callCreateNoteHandler}>
             Save Note
           </button>
