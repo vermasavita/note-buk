@@ -1,5 +1,6 @@
 import { useSidebar, useAuth } from "../../context";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./navbar.css";
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     authDispatch({ type: "LOGOUT" });
+    toast.success("Successfully Logged Out");
   };
 
   return (
