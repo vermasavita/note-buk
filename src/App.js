@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Archive, Home, Login, Notes, Signup, Trash } from "./pages";
+import { Archive, Home, Login, Notes, Signup, Trash, Tag } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequiresAuth } from "./RequireAuth";
@@ -42,6 +42,15 @@ function App() {
           element={
             <RequiresAuth>
               <Trash />
+            </RequiresAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/tags/:tagName"
+          element={
+            <RequiresAuth>
+              <Tag />
             </RequiresAuth>
           }
         ></Route>

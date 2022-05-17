@@ -1,14 +1,15 @@
 import "./note-card.css";
-import ReactHtmlParser from "react-html-parser";
+import HtmlParser from "react-html-parser/lib/HtmlParser";
 import { notePinHandler } from "../../services";
 import { useAuth, useNote } from "../../context";
+import { capitalizeStr } from "../../utils/capitalizeStr";
 const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
   const {
     authState: { token },
   } = useAuth();
   const { noteDispatch } = useNote();
 
-  const updateNoteHandlerR = (e) => {
+  const updateNoteHandler = (e) => {
     e.preventDefault();
     setUpdateNote(note);
     setCreateNoteModal(true);
@@ -20,10 +21,10 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
   };
 
   const getDate = (date) => {
-    const currTime = date.slice(11, 16); 
+    const currTime = date.slice(11, 16);
     const currDate = date.slice(0, 10).split("-").reverse().join("-");
     return ` ${currDate} ${currTime}`;
-  } 
+  };
 
   return (
     <>
@@ -47,12 +48,13 @@ const NoteCard = ({ note, setUpdateNote, setCreateNoteModal }) => {
             </div>
           </div>
           <div className="form-control">
-            <p>{ReactHtmlParser(note.content)}</p>
+            <div>{HtmlParser(note.content)}</div>
           </div>
+          {note.tag !== "" ? <div className="tagName">{capitalizeStr(note.tag)}</div> : null}
           <div className="note-date">
             <p>{getDate(note.date)}</p>
             <div className="note-action-container">
-              <button onClick={updateNoteHandlerR}>
+              <button onClick={updateNoteHandler}>
                 <i className="bx bx-pencil"></i>
               </button>
               <button>

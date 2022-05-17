@@ -100,7 +100,7 @@
 
 .modal-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .modal-footer .btn {
@@ -110,5 +110,5 @@
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 .modal-footer .btn-icon {
-  background-color: var(--orange-color);
+  background-color: var(--blue-color);
 }

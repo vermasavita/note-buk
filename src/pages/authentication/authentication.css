@@ -24,7 +24,7 @@
 
 .login-container .login-btns .login {
   color: var(--white-color);
-  background-color: var(--orange-color);
+  background-color: var(--blue-color);
 }
 
 .login-credential .login-email,

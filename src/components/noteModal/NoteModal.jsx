@@ -1,10 +1,11 @@
 import { RichTextEditor } from "../richTextEditor/RichTextEditor";
 import "./note-modal.css";
-import { useAuth, useNote } from "../../context";
+import { useAuth, useNote, useTag } from "../../context";
 import { createNoteHandler, updateNoteHandler } from "../../services";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { formatDate } from "../../backend/utils/authUtils";
+import { capitalizeStr } from "../../utils/capitalizeStr";
 
 const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
   const [newNote, setNewNote] = useState(
@@ -14,12 +15,17 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
       color: "Default",
       isPinned: false,
       priority: "Low",
+      tag: "",
     }
   );
   const { noteDispatch } = useNote();
   const {
     authState: { token },
   } = useAuth();
+
+  const {
+    tagState: { tags },
+  } = useTag();
 
   const inputHandler = (event) => {
     const { id, value } = event.target;
@@ -77,16 +83,30 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
         <div className="note-modal-action-container">
           <div className="options">
             <label htmlFor="tag">Tags: </label>
-            <select name="tag" id="tag">
+            <select
+              name="tag"
+              id="tag"
+              value={newNote.tag}
+              onChange={inputHandler}
+            >
               <option>None</option>
-              <option>Home</option>
-              <option>Work</option>
+
+              {tags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {capitalizeStr(tag)}
+                </option>
+              ))}
             </select>
           </div>
           <div className="options">
             <label htmlFor="tag">Priority: </label>
-            <select name="priority" id="priority" value={newNote.priority} onChange={inputHandler}>
-              <option value="Low" >Low</option>
+            <select
+              name="priority"
+              id="priority"
+              value={newNote.priority}
+              onChange={inputHandler}
+            >
+              <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </select>
@@ -109,7 +129,6 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
           </div>
         </div>
         <div className="modal-footer">
-          <button className="btn">Add label</button>
           <button className="btn btn-icon" onClick={callCreateNoteHandler}>
             Save Note
           </button>

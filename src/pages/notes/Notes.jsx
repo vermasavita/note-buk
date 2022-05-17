@@ -92,13 +92,6 @@ const Notes = () => {
             setUpdateNote={setUpdateNote}
           />
         ) : null}
-        {/* {createNoteModal ? (
-          <NoteModal
-            setCreateNoteModal={setCreateNoteModal}
-            updateNote={updateNote}
-            setUpdateNote={setUpdateNote}
-          />
-        ) : null} */}
       </div>
     </>
   );
