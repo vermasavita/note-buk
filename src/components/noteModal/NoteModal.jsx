@@ -106,9 +106,9 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
               value={newNote.priority}
               onChange={inputHandler}
             >
-              <option value="Low">LOW</option>
-              <option value="Medium">MEDIUM</option>
-              <option value="High">HIGH</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">Hight</option>
             </select>
           </div>
           <div className="options">
