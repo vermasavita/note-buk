@@ -47,9 +47,9 @@ const Notes = () => {
               >
                 <i className="bx bx-plus"></i>Create Note
               </button>
-              {/* <div>
+              <div className={`filter-container ${showFilter? "filter-container-active": ""}`}>
                 <Filter/>
-              </div> */}
+              </div>
             </div>
           </div>
           <div className="notes-category-container">

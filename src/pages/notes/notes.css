@@ -57,3 +57,10 @@
 }
 
 /* tag */
+
+@media screen and (max-width: 500px) {
+  .btn {
+    padding: 2px 5px;
+    padding-right: 10px;
+  }
+}
