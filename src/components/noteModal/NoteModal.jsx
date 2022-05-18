@@ -108,7 +108,7 @@ const NoteModal = ({ setCreateNoteModal, updateNote, setUpdateNote }) => {
             >
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
-              <option value="High">Hight</option>
+              <option value="High">High</option>
             </select>
           </div>
           <div className="options">
