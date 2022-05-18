@@ -43,7 +43,7 @@ const Notes = () => {
               </button>
               <button
                 className="btn btn-icon note-btn"
-                // onClick={() => setCreateNoteModal(true)}
+                onClick={() => setCreateNoteModal(true)}
               >
                 <i className="bx bx-plus"></i>Create Note
               </button>
