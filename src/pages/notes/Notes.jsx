@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import { Navbar, NoteCard, SideBar, NoteModal } from "../../components";
+import { Navbar, NoteCard, SideBar, NoteModal, Filter } from "../../components";
 import "./notes.css";
-import { useAuth, useNote } from "../../context";
+import { useAuth, useFilter, useNote } from "../../context";
 import { getAllNotesHandler } from "../../services";
 import { getPinnedAndUnpinnedNotes } from "../../utils/pinNote";
+import { sortNoteByDate } from "../../utils/filter/sortNoteByDate";
+import { sortNoteByPriority } from "../../utils/filter/sortNoteByPriority";
 
 const Notes = () => {
   const [createNoteModal, setCreateNoteModal] = useState(false);
   const [updateNote, setUpdateNote] = useState(null);
+  const [showFilter, setShowFilter] = useState(false);
 
   const {
     noteState: { notes },
@@ -18,12 +21,21 @@ const Notes = () => {
     authState: { token },
   } = useAuth();
 
+  const {
+    filterState: { sortByDate, sortByPriority },
+  } = useFilter();
+
   useEffect(() => {
     getAllNotesHandler(token, noteDispatch);
   }, []);
 
   //pinNote
   const { pinNote, unpinNote } = getPinnedAndUnpinnedNotes(notes);
+  const sortedNoteByDate = sortNoteByDate(unpinNote, sortByDate);
+  const sortedNoteByPriority = sortNoteByPriority(
+    sortedNoteByDate,
+    sortByPriority
+  );
   return (
     <>
       <Navbar />
@@ -35,7 +47,10 @@ const Notes = () => {
           <div className="create-note-head">
             <h1>Notes</h1>
             <div className="note-head-action">
-              <button className="btn btn-icon">
+              <button
+                className="btn btn-icon"
+                onClick={() => setShowFilter((prev) => !prev)}
+              >
                 <i className="bx bx-filter"></i>
                 Filter
               </button>
@@ -45,6 +60,13 @@ const Notes = () => {
               >
                 <i className="bx bx-plus"></i>Create Note
               </button>
+              <div
+                className={`filter-container ${
+                  showFilter ? "filter-container-active" : ""
+                }`}
+              >
+                <Filter />
+              </div>
             </div>
           </div>
           <div className="notes-category-container">
@@ -70,7 +92,7 @@ const Notes = () => {
                 <>
                   <h2>All Notes</h2>
                   <div className="saved-notes">
-                    {unpinNote.map((note) => (
+                    {sortedNoteByPriority.map((note) => (
                       <NoteCard
                         key={note._id}
                         {...note}

@@ -5,10 +5,13 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import {
+  ArchiveProvider,
   AuthProvider,
+  FilterProvider,
   NoteProvider,
   SidebarProvider,
   TagProvider,
+  TrashProvider,
 } from "./context";
 
 // Call make Server
@@ -21,7 +24,13 @@ ReactDOM.render(
         <AuthProvider>
           <NoteProvider>
             <TagProvider>
-              <App />
+              <TrashProvider>
+                <ArchiveProvider>
+                  <FilterProvider>
+                    <App />
+                  </FilterProvider>
+                </ArchiveProvider>
+              </TrashProvider>
             </TagProvider>
           </NoteProvider>
         </AuthProvider>

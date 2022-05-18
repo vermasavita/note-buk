@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Archive, Home, Login, Notes, Signup, Trash, Tag } from "./pages";
+import { Archive, Home, Login, Notes, Signup, Trash, Tag, Error404 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequiresAuth } from "./RequireAuth";
@@ -54,6 +54,7 @@ function App() {
             </RequiresAuth>
           }
         ></Route>
+        <Route path="*" element={<Error404 />} />
         <Route path="/" element={<Home />}></Route>
       </Routes>
     </div>

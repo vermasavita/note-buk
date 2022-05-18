@@ -1,6 +1,23 @@
 import { Navbar, SideBar } from "../../components";
 import { TrashCard } from "./component/TrashCard";
+import { getAllTrashNotesHandler } from "../../services";
+import { useAuth, useTrash } from "../../context";
+import { useEffect } from "react";
+import { EmptyTrash } from "./component/EmptyTrash";
 const Trash = () => {
+  const {
+    trashNoteState: { trash },
+    trashNoteDispatch,
+  } = useTrash();
+
+  const {
+    authState: { token },
+  } = useAuth();
+
+  useEffect(() => {
+    getAllTrashNotesHandler(token, trashNoteDispatch);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -9,12 +26,20 @@ const Trash = () => {
           <SideBar />
         </div>
         <div className="sub-container">
-          <div className="notes-category">
-            <h2>Trash Notes</h2>
-            <div className="saved-notes">
-              <TrashCard />
-            </div>
-          </div>
+          {trash.length !== 0 ? (
+            <>
+              <div className="notes-category">
+                <h1>Trash Notes</h1>
+                <div className="saved-notes">
+                  {trash.map((trashData) => (
+                    <TrashCard key={trashData._id} trashData={trashData} />
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <EmptyTrash />
+          )}
         </div>
       </div>
     </>

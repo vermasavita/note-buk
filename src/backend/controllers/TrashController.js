@@ -70,3 +70,4 @@ export const restoreFromTrashHandler = function (schema, request) {
   this.db.users.update({ _id: user._id }, user);
   return new Response(200, {}, { trash: user.trash, notes: user.notes });
 };
+

@@ -10,6 +10,7 @@ const Tag = () => {
     noteState: { notes },
   } = useNote();
 
+  console.log(notes)
   const [updateNote, setUpdateNote] = useState(false);
   const [createNoteModal, setCreateNoteModal] = useState(false);
   const { tagName } = useParams();
@@ -21,8 +22,8 @@ const Tag = () => {
           <SideBar />
         </div>
         <div className="sub-container">
-          {notes.length > 0 ? (
-            <div className="notes-category">
+   
+            <div className="notes-category ">
               <h1>{capitalizeStr(tagName)} Notes</h1>
               {notes
                 .filter((note) => note.tag.includes(tagName))
@@ -37,11 +38,6 @@ const Tag = () => {
                   </div>
                 ))}
             </div>
-          ) : (
-            <div>
-              <h2>This tag does not have any notes.</h2>
-            </div>
-          )}
         </div>
       </div>
       {createNoteModal ? (
