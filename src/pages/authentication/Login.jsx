@@ -11,8 +11,8 @@ const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
 
   const guestUserCredential = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    email: "savitaverma@gmail.com",
+    password: "savitaverma123",
   };
 
   const changeHandler = (e) => {
