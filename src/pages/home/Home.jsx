@@ -7,7 +7,7 @@ const Home = () => {
       <div className="layout-navbar">
         <h1 className="layout-logo">NoteBook</h1>
         <button type="button">
-          <a href="https://github.com/vermasavita" target="_blank">GitHub</a>
+          <a href="https://github.com/vermasavita" target="_blank" className="color">GitHub</a>
         </button>
       </div>
       <div className="layout-content">
