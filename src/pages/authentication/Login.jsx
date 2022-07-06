@@ -73,7 +73,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="adarshbalika@gmail.com"
+                placeholder="savitaverma@gmail.com"
                 required
                 value={user.email}
                 onChange={changeHandler}
