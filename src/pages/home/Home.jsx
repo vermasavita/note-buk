@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 const Home = () => {
   const navigate = useNavigate();
@@ -6,8 +6,9 @@ const Home = () => {
     <div className="hero">
       <div className="layout-navbar">
         <h1 className="layout-logo">NoteBook</h1>
-        {/* <button type="button">
-          <Link to="https://github.com/vermasavita" className="link">GitHub</Link> </button> */}
+        <button type="button">
+          <a href="https://github.com/vermasavita">GitHub</a>
+        </button>
       </div>
       <div className="layout-content">
         <h2>
